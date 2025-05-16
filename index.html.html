@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <style>
+        /* Reset e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+
+
+        /* Seções */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #3498db;
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Sobre Mim */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .doc-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .doc-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1c40f;
+            color: #000;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .doc-btn:hover {
+            background: #f39c12;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Competências */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill i {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        /* Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* Contactos */
+        #contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #2c3e50;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: #fff;
+            margin-top: 3rem;
+        }
+
+        /* Animações */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .doc-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre Mim</a></li>
+                <li><a href="#skills">Competências</a></li>
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#contact">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Maria Luisa da Silva</h1>
+            <h2></h2>
+            
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Sobre Mim</h2>
+        <div class="about-content fade-in">
+            <p>
+                Sou estudante de Engenharia Informática com formação técnica em informática e experiência prática 
+                em atendimento ao cliente e gestão de negócios. Apaixonada por tecnologia,
+                com conhecimentos em C, Java, Python e ferramentas Microsoft. Procuro oportunidades para crescer 
+                como programadora júnior e contribuir com criatividade, dedicação e vontade de aprender.
+            </p>
+            <div class="doc-links">
+                <a href="cvMalu.pdf" target="_blank" class="doc-btn">
+                    <i class="fas fa-file-pdf"></i> Currículo (CV)
+                </a>
+                <a href="swot.crdownload" target="_blank" class="doc-btn">
+                    <i class="fas fa-chart-bar"></i> Análise SWOT
+                </a>
+                <a href="cartaapres.pdf" target="_blank" class="doc-btn">
+                    <i class="fas fa-envelope"></i> Carta de Apresentação
+                </a>
+                <a href="#" target="_blank" class="doc-btn">
+                    <i class="fas fa-video"></i> Vídeo CV
+                </a>
+                <a href="https://www.linkedin.com/in/maria-luisa-da-silva-1a16b8308/
+                
+                " target="_blank" class="doc-btn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Competências Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill fade-in">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <p>Django, Flask, Pandas</p>
+            </div>
+            <div class="skill fade-in">
+                <i class="fab fa-java"></i>
+                <h3>Java</h3>
+                <p>Spring Boot, Android</p>
+            </div>
+            <div class="skill fade-in">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+                <p>React, Node.js</p>
+            </div>
+            <div class="skill fade-in">
+                <i class="fas fa-database"></i>
+                <h3>SQL</h3>
+                <p>MySQL, PostgreSQL</p>
+            </div>
+            <div class="skill fade-in">
+                <i class="fab fa-html5"></i>
+                <h3>HTML/CSS</h3>
+                <p>Bootstrap, Sass</p>
+            </div>
+            <div class="skill fade-in">
+                <i class="fab fa-git"></i>
+                <h3>Git</h3>
+                <p>GitHub, GitLab</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>Projetos Recentes</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3>Quatro em Linha</h3>
+                <p>Desenvolvi um jogo interativo de tabuleiro “Quatro em Linha”, utilizando a linguagem Java. </p>
+                <div class="tech-tags">
+                    <span>Java</span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="#" class="btn">Ver Projeto</a>
+            </div>
+            <div class="project-card fade-in">
+                <h3>Website Mluisa_Bijuterias</h3>
+                <p>Site para a loja Mluisa_Bijuterias desenvolvido em HTML, CSS e JavaScript.</p>
+                <div class="tech-tags">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+                <a href="#" class="btn">Ver Projeto</a>
+            </div>
+            <div class="project-card fade-in">
+                <h3>Radar de Barcos</h3>
+                <p>Este projeto consiste na Implementação de um sistema de monitoramento de barcos
+                     baseado em ficheiros de entrada (“antes” e “depois”) usando linguagem C.</p>
+                <div class="tech-tags">
+                    <span>C</span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <a href="#" class="btn">Ver Projeto</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contactos</h2>
+        <form id="contact-form" class="fade-in">
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensagem" required></textarea>
+            <button type="submit" class="btn">Enviar Mensagem</button>
+        </form>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:exemplo@email.com"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+351123456789"><i class="fas fa-phone"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Maria da Silva. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Efeito de scroll suave
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação de elementos quando aparecem na tela
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Validação do formulário
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação de envio
+            const formData = new FormData(this);
+            const formValues = Object.fromEntries(formData.entries());
+            
+            console.log('Formulário enviado:', formValues);
+            
+            // Feedback ao usuário
+            alert('Mensagem enviada com sucesso! Entrarei em contacto brevemente.');
+            this.reset();
+        });
+
+        // Atualização dinâmica do ano no footer
+        document.querySelector('footer p').innerHTML = 
+            `&copy; ${new Date().getFullYear()} João Silva. Todos os direitos reservados.`;
+    </script>
+</body>
+</html>
